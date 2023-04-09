@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-4">
+        <h2>Login</h2>
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="senha">Senha:</label>
+          <input type="password" class="form-control" id="senha" [(ngModel)]="senha" name="senha" required (keyup.enter)="onSubmit()">
+  
+  
+        </div>
+        <button type="button" class="btn btn-primary" (click)="onSubmit()">Entrar</button>
+        <button type="button" class="btn btn-primary" routerLink="/cadastro">Cadastrar</button>
+        </div>
+    </div>
+  </div>  

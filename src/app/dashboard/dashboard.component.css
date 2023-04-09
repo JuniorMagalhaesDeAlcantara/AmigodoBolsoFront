@@ -1,0 +1,96 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+  }
+  
+  .main {
+    margin-top: 2%;
+    margin-left:10%;
+    width:80%;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+  }
+  
+  .chart {
+    flex: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-right: 1rem;
+  }
+  
+  .table {
+    flex: 1;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 1rem;
+  }
+
+  .tableh3{
+    text-align: center;
+  }
+  
+
+  .toolbar {
+    height: 7.5rem;
+    justify-content: center;
+	background-color:#03338b;
+	border-radius:0px 0px 50px 50px;
+  }
+
+.img{
+    width:auto;
+    text-align:center;
+}
+ 
+.div-button{
+    margin-top: 2%;
+    margin-left:10%;
+    text-align: center;
+    width:80%;
+    border-width: 1px; /* aqui, cada lado possui uma borda de largura diferente */
+    border-style: solid; /* estilos de borda diferentes para cima-baixo e esquerda-direita */
+    border-color: #d6d4d4; /* uma cor de borda para cada lado */
+    padding: 20px;
+    }
+
+.button{
+    text-align:center;
+    padding-top:2%;
+    padding-bottom:2%;
+    border:none!important;
+    background-color: white!important;
+    
+   }
+
+.div-central{
+    margin-top: 2%;
+    margin-left:10%;
+    text-align: center;
+    width:80%;
+    border-width: 1px; /* aqui, cada lado possui uma borda de largura diferente */
+    border-style: solid; /* estilos de borda diferentes para cima-baixo e esquerda-direita */
+    border-color: #d6d4d4; /* uma cor de borda para cada lado */
+    padding: 20px;
+    }
+    .example-card {
+        max-width: 400px;
+        margin-bottom: 8px;
+      }
+
+    .alinha-esquerda{
+       padding: 3%;
+       
+    }
+

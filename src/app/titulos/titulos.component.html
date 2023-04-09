@@ -1,0 +1,27 @@
+<div class="dashboard ">
+  <mat-toolbar class="toolbar">
+    <img src='/assets/logo2.png' class="img">
+</mat-toolbar>
+
+ <table class="div-central">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Descrição</th>
+        <th>Tipo</th>
+        <th>Valor</th>
+        <th>Data de Cadastro</th>
+        <th>Observação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let titulosData of titulosData">
+        <td> {{titulosData.id}}</td>
+        <td> {{titulosData.descricao}}</td>
+        <td> {{titulosData.tipo}}</td>
+        <td> {{titulosData.valor | currency:'BRL':'symbol':'1.2-2'}}</td>
+        <td> {{titulosData.dataCadastro | date:'dd/MM/yyyy'}}</td>
+        <td> {{titulosData.observacao}}</td>
+      </tr>
+    </tbody>
+  </table>

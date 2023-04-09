@@ -1,0 +1,48 @@
+<div class="dashboard ">
+  <mat-toolbar class="toolbar">
+    <img src='/assets/logo2.png' class="img">
+</mat-toolbar>
+
+<section class="container" class="div-central">
+  <div class="row">
+      <div class="col button">
+          <button mat-flat-button><img src="/assets/button_addReceita.png"></button>
+      </div>
+      <div class="col button">
+          <button mat-flat-button><img src="/assets/button_addDespesa.png"></button>
+      </div>
+      <div class="col button">
+          <button routerLink="/titulos" mat-flat-button><img src="/assets/button_extrato.png"></button>
+      </div>
+      <div class="col button">
+          <button mat-flat-button><img src="/assets/button_sonho.png"></button>
+      </div>
+    </div>
+    <div class="row button">
+      <div class="col button">
+          <button mat-flat-button><img src="/assets/button_edu.png"></button>
+      </div>
+      <div class="col button">
+          <button routerLink="/usuarios" mat-flat-button><img src="/assets/button_user.png"></button>
+      </div>
+      <div class="col button">
+          <button mat-flat-button><img src="/assets/button_config.png"></button>
+      </div>
+      <div class="col button">
+          <button mat-flat-button><img src="/assets/button_info.png"></button>
+      </div>
+    </div> 
+  </section>  
+
+  <div class="main">
+    <div class="chart">
+      <p> gráfico aqui --> </p>
+    </div>
+    <div class="table">
+      <h3 style="text-align: center">Extrato</h3>
+      <p>Total de Despesas {{dashboardData.totalApagar | currency:'BRL':'symbol':'1.2-2'}}</p>
+      <p>Total de Receitas {{dashboardData.totalAreceber | currency:'BRL':'symbol':'1.2-2'}}</p>
+      <p>Saldo {{dashboardData.saldo | currency:'BRL':'symbol':'1.2-2'}}</p>
+    </div>
+  </div>
+</div>

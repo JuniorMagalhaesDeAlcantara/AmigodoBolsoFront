@@ -1,0 +1,34 @@
+<div class="dashboard ">
+  <mat-toolbar class="toolbar">
+    <img src='/assets/logo2.png' class="img">
+</mat-toolbar>
+
+<h1>Perfil do Usuário</h1>
+
+<div *ngIf="usuario">
+  <p><strong>Nome:</strong> {{ usuario.nome }}</p>
+  <p><strong>Email:</strong> {{ usuario.email }}</p>
+  <p><strong>ID:</strong> {{ usuario.id }}</p>
+  <button (click)="deletarUsuario()">Deletar conta</button>
+</div>
+
+<div *ngIf="usuario">
+  <h2>Atualizar perfil</h2>
+  <form (submit)="atualizarUsuario()">
+
+    <label for="email">Novo nome:</label>
+    <input type="nome" name="nome" id="nome" [(ngModel)]="novoNome">
+
+    <label for="email">Novo email:</label>
+    <input type="email" name="email" id="email" [(ngModel)]="novoEmail">
+
+    <label for="senha">Nova senha:</label>
+    <input type="password" name="senha" id="senha" [(ngModel)]="novaSenha">
+
+    <button type="submit">Atualizar</button>
+  </form>
+</div>
+
+<div *ngIf="!usuario">
+  <p>Não foi possível carregar o perfil do usuário.</p>
+</div>
