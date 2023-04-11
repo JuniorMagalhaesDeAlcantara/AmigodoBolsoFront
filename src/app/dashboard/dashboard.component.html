@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+
 <div class="dashboard ">
   <mat-toolbar class="toolbar">
     <img src='/assets/logo2.png' class="img">
@@ -26,17 +28,17 @@
           <button routerLink="/usuarios" mat-flat-button><img src="/assets/button_user.png"></button>
       </div>
       <div class="col button">
-          <button mat-flat-button><img src="/assets/button_config.png"></button>
+          <button mat-flat-button routerLink="/grafico"><img src="/assets/button_config.png"></button>
       </div>
       <div class="col button">
-          <button mat-flat-button><img src="/assets/button_info.png"></button>
+          <button routerLink="/centrocusto" mat-flat-button><img src="/assets/button_info.png"></button>
       </div>
     </div> 
   </section>  
 
   <div class="main">
     <div class="chart">
-      <p> gráfico aqui --> </p>
+      <canvas id="myChart"></canvas>
     </div>
     <div class="table">
       <h3 style="text-align: center">Extrato</h3>
@@ -46,3 +48,5 @@
     </div>
   </div>
 </div>
+
+

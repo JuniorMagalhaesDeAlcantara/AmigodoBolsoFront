@@ -12,10 +12,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TitulosComponent } from './titulos/titulos.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
+import { CentroCustoComponent } from './centro-custo/centro-custo.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { GraficoCentrocustoComponent } from './grafico-centrocusto/grafico-centrocusto.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,8 @@ import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.co
     TitulosComponent,
     UsuarioComponent,
     CadastroUsuarioComponent,
+    CentroCustoComponent,
+    GraficoCentrocustoComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,9 @@ import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.co
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }

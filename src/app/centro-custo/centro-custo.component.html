@@ -1,0 +1,98 @@
+<div class="dashboard ">
+    <mat-toolbar class="toolbar">
+      <img src='/assets/logo2.png' class="img">
+  </mat-toolbar>
+  
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Centro de Custo</h2>
+        <hr>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <button type="button" class="btn btn-primary" (click)="openModal(contentCriar, 0)">Novo Centro de Custo</button>
+        <hr>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Observação</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let centrocusto of centrocustoData">
+              <th scope="row">{{ centrocusto.id }}</th>
+              <td>{{ centrocusto.descricao }}</td>
+              <td>{{ centrocusto.observacao }}</td>
+              <td>
+                <button type="button" class="btn btn-outline-primary btn-sm" (click)="openEditarModal(content, centrocusto.id)">Editar</button>
+
+                <button type="button" class="btn btn-danger btn-sm" (click)="removerCentroCusto(centrocusto.id)">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <ng-template #contentCriar let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">Criar Centro de Custo</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <input type="text" class="form-control" id="descricao"  name="descricao" [(ngModel)]="descricao">
+          </div>
+          <div class="form-group">
+            <label for="observacao">Observação</label>
+            <input type="text" class="form-control" id="observacao"  name="observacao" [(ngModel)]="observacao">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="criarCentroCusto()">Criar</button>
+        <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+      </div>
+    </ng-template>
+  
+   
+<!-- Modal de Edição -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Editar Centro de Custo</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('cancelar')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="modalFormulario">
+      <div class="form-group">
+        <label for="descricao">Descrição:</label>
+        <input type="text" class="form-control" formControlName="descricao" id="descricao" placeholder="Digite a descrição do centro de custo">
+      </div>
+      <div class="form-group">
+        <label for="observacao">Observação:</label>
+        <input type="text" class="form-control" formControlName="observacao" id="observacao" placeholder="Digite a observação do centro de custo">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancelar')">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="atualizarCentroCusto()">Salvar</button>
+  </div>
+</ng-template>
