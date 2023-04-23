@@ -1,29 +1,33 @@
-<div class="dashboard ">
-    <mat-toolbar class="toolbar">
-      <img src='/assets/logo2.png' class="img">
-  </mat-toolbar>
-  
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Centro de Custo</h2>
-        <hr>
-      </div>
+<mat-toolbar class="toolbar">
+  <img src='/assets/logo2.png' class="img">
+</mat-toolbar>
+
+<div class="dashboard">
+
+  <div class="button-container">
+    <div class="button-row">
+      <button class="button"  routerLink="/dashboard"><img src="/assets/button_home.png">
+        <span style="color: black;">Home</span>
+      </button>
+      <button class="button" (click)="openModal(contentCriar, 0)"><img src="/assets/button_addReceita.png">
+      <span style="color: black;">Adicionar Centro de Custo</span>
+      </button>
+      <button class="button" routerLink="/titulos"><img src="/assets/button_titulo.png">
+        <span style="color: black;">Titulos</span>
+      </button>
+      <button class="button"  onclick="location.reload()"><img src="/assets/button_sair.png">
+        <span style="color: black;">Sair</span>
+      </button>
     </div>
+  </div>
   
-    <div class="row">
-      <div class="col-md-12">
-        <button type="button" class="btn btn-primary" (click)="openModal(contentCriar, 0)">Novo Centro de Custo</button>
-        <hr>
-      </div>
-    </div>
-  
-    <div class="row">
-      <div class="col-md-12">
-        <table class="table table-hover">
+ 
+    <div class="row ">
+      <div class="col-md-12 ">
+        <table class="table table-hover  button-container">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">ID</th>
               <th scope="col">Descrição</th>
               <th scope="col">Observação</th>
               <th scope="col">Ações</th>
@@ -46,9 +50,9 @@
     </div>
 
     <ng-template #contentCriar let-modal>
-      <div class="modal-header">
+      <div class="modal-header bg-primary text-light">
         <h4 class="modal-title">Criar Centro de Custo</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+        <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss('Cancelar')">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -66,16 +70,16 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="criarCentroCusto()">Criar</button>
-        <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+        <button type="button" class="btn btn btn-danger" (click)="modal.dismiss('cancelar')">Cancelar</button>
       </div>
     </ng-template>
   
    
 <!-- Modal de Edição -->
 <ng-template #content let-modal>
-  <div class="modal-header">
+  <div class="modal-header bg-primary text-light">
     <h4 class="modal-title">Editar Centro de Custo</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('cancelar')">
+    <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss('Cancelar')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -92,7 +96,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancelar')">Cancelar</button>
     <button type="button" class="btn btn-primary" (click)="atualizarCentroCusto()">Salvar</button>
+    <button type="button" class="btn btn btn-danger" (click)="modal.dismiss('cancelar')">Cancelar</button>
   </div>
 </ng-template>

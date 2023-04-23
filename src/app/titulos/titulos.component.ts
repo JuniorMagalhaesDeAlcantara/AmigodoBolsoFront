@@ -72,11 +72,11 @@ export class TitulosComponent implements OnInit {
     const dadosTitulo: TitulosData = {
       descricao: this.formularioTitulo.get('descricao')!.value,
       tipo: this.formularioTitulo.get('tipo')!.value,
-      valor: parseFloat(this.formularioTitulo.get('valor')!.value.toString().replace(',', '.') + '00'),
+      valor: parseFloat(this.formularioTitulo.get('valor')!.value.replace('.', '').replace(',', '.')),
       dataReferencia: new Date(),
       dataCadastro: new Date(),
       dataVencimento: this.formularioTitulo.get('dataVencimento')!.value,
-      observacao: '',
+      observacao: this.formularioTitulo.get('observacao')!.value,
       centrosDeCustos: [{ 
         id: Number(this.formularioTitulo.get('centrosDeCustos')!.value),
         descricao: this.centrosDeCustos.find(x => x.id === Number(this.formularioTitulo.get('centrosDeCustos')!.value))!.descricao,
@@ -113,11 +113,11 @@ export class TitulosComponent implements OnInit {
       id: this.formularioTitulo.get('id')!.value,
       descricao: this.formularioTitulo.get('descricao')!.value,
       tipo: this.formularioTitulo.get('tipo')!.value,
-      valor: parseFloat(this.formularioTitulo.get('valor')!.value.toString().replace(',', '.') + '00'),
+      valor: parseFloat(this.formularioTitulo.get('valor')!.value.replace('.', '').replace(',', '.')),
       dataReferencia: new Date(),
       dataCadastro: new Date(),
       dataVencimento: this.formularioTitulo.get('dataVencimento')!.value,
-      observacao: '',
+      observacao: this.formularioTitulo.get('observacao')!.value,
       centrosDeCustos: [{ 
         id: Number(this.formularioTitulo.get('centrosDeCustos')!.value),
         descricao: this.centrosDeCustos.find(x => x.id === Number(this.formularioTitulo.get('centrosDeCustos')!.value))!.descricao,

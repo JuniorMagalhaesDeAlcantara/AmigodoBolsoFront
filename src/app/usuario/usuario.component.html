@@ -1,34 +1,68 @@
-<div class="dashboard ">
-  <mat-toolbar class="toolbar">
-    <img src='/assets/logo2.png' class="img">
+<mat-toolbar class="toolbar">
+  <img src='/assets/logo2.png' class="img">
 </mat-toolbar>
 
-<h1>Perfil do Usuário</h1>
+<div class="dashboard">
 
-<div *ngIf="usuario">
-  <p><strong>Nome:</strong> {{ usuario.nome }}</p>
-  <p><strong>Email:</strong> {{ usuario.email }}</p>
-  <p><strong>ID:</strong> {{ usuario.id }}</p>
-  <button (click)="deletarUsuario()">Deletar conta</button>
+  <div class="button-container">
+    <div class="button-row">
+      <button class="button"  routerLink="/dashboard"><img src="/assets/button_home.png">
+        <span style="color: black;">Home</span>
+      </button>
+      <button class="button" routerLink="/titulos"><img src="/assets/button_titulo.png">
+        <span style="color: black;">Titulos</span>
+      </button>
+      <button class="button" routerLink="/centrocusto"><img src="/assets/button_categoria.png">
+        <span style="color: black;">Centro de Custo</span>
+      </button>
+      <button class="button"  onclick="location.reload()"><img src="/assets/button_sair.png">
+        <span style="color: black;">Sair</span>
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <div *ngIf="usuario" class="user-container">
+      <h2>Dados do Usuário</h2>
+      <div>
+        <div *ngIf="usuario" class="profile-info">
+          <p><strong>Nome:</strong> {{ usuario.nome }}</p>
+          <p><strong>Email:</strong> {{ usuario.email }}</p>
+          <p><strong>ID:</strong> {{ usuario.id }}</p>
+          <button (click)="deletarUsuario()" class="profile__button btn-lg">Deletar conta</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="usuario" class="user-container">
+      <h2>Atualizar Dados</h2>
+      <form (submit)="atualizarUsuario()" class="profile__form">
+
+        <div class="form-group">
+          <label for="nome" class="form-label">Novo nome:</label>
+          <input type="text" name="nome" id="nome" [(ngModel)]="novoNome" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Novo email:</label>
+          <input type="email" name="email" id="email" [(ngModel)]="novoEmail" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="senha" class="form-label">Nova senha:</label>
+          <input type="password" name="senha" id="senha" [(ngModel)]="novaSenha" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary d-grid gap-2 col-6 mx-auto">Atualizar</button>
+      </form>
+    </div>
+
+    <div *ngIf="!usuario">
+      <p class="profile__message">Não foi possível carregar o perfil do usuário.</p>
+    </div>
+  </div>
+
 </div>
 
-<div *ngIf="usuario">
-  <h2>Atualizar perfil</h2>
-  <form (submit)="atualizarUsuario()">
 
-    <label for="email">Novo nome:</label>
-    <input type="nome" name="nome" id="nome" [(ngModel)]="novoNome">
 
-    <label for="email">Novo email:</label>
-    <input type="email" name="email" id="email" [(ngModel)]="novoEmail">
-
-    <label for="senha">Nova senha:</label>
-    <input type="password" name="senha" id="senha" [(ngModel)]="novaSenha">
-
-    <button type="submit">Atualizar</button>
-  </form>
-</div>
-
-<div *ngIf="!usuario">
-  <p>Não foi possível carregar o perfil do usuário.</p>
-</div>

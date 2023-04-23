@@ -1,90 +1,176 @@
-.dashboard {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  
-  .header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-  }
-  
-  .main {
-    margin-top: 2%;
-    margin-left:10%;
-    width:80%;
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    
-  }
-  
-  .chart {
-    flex: 1;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 1rem;
-    margin-right: 1rem;
-  }
-  
-  .table {
-    flex: 1;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 1rem;
-  }
-
-  .toolbar {
-    height: 7.5rem;
-    justify-content: center;
-	background-color:#03338b;
-	border-radius:0px 0px 50px 50px;
-  }
-
-.img{
-    width:auto;
-    text-align:center;
+.toolbar {
+  height: 7.5rem;
+  justify-content: center;
+  background-color:#03338b;
+  border-radius:0px 0px 50px 50px;
+  margin-bottom: 40px;
 }
- 
-.div-button{
-    margin-top: 2%;
-    margin-left:10%;
-    text-align: center;
-    width:80%;
-    border-width: 1px; /* aqui, cada lado possui uma borda de largura diferente */
-    border-style: solid; /* estilos de borda diferentes para cima-baixo e esquerda-direita */
-    border-color: #d6d4d4; /* uma cor de borda para cada lado */
-    padding: 20px;
-    }
 
-.button{
-    text-align:center;
-    padding-top:2%;
-    padding-bottom:2%;
-    border:none!important;
-    background-color: white!important;
-    
-   }
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-.div-central{
-    margin-top: 2%;
-    margin-left:10%;
-    text-align: center;
-    width:80%;
-    border-width: 1px; /* aqui, cada lado possui uma borda de largura diferente */
-    border-style: solid; /* estilos de borda diferentes para cima-baixo e esquerda-direita */
-    border-color: #d6d4d4; /* uma cor de borda para cada lado */
-    padding: 20px;
-    }
-    .example-card {
-        max-width: 400px;
-        margin-bottom: 8px;
-      }
+.button-container {
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
 
-    .alinha-esquerda{
-       padding: 3%;
-       
-    }
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.button {
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+  width: 25%;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  background-color: #0c7cd5;
+}
+
+.hide-contents {
+  display: none;
+}
+
+/* Estilização da tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  color: #212529;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+table th {
+  font-weight: bold;
+}
+
+/* Estilização das linhas da tabela */
+table tbody tr:nth-of-type(even) {
+  background-color: #f8f9fa;
+}
+
+/* Estilização dos botões na célula "Ações" */
+table td form button {
+  margin-right: 0.5rem;
+}
+
+/* Estilização da tabela em telas menores */
+@media (max-width: 576px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tbody tr {
+    display: block;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+  }
+
+  table tbody td {
+    display: block;
+    text-align: right;
+    font-size: 0.875rem;
+    border-top: none;
+  }
+
+  table tbody td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+/* Estilos para o modal */
+.modal-header {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #d1d1d1;
+  padding: 1rem;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.modal-footer {
+  border-top: 1px solid #d1d1d1;
+  padding: 1rem;
+}
+
+/* Estilos para o formulário */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+textarea.form-control {
+  height: auto;
+}
+
+/* Estilos para dispositivos móveis */
+@media (max-width: 767.98px) {
+  .modal-dialog {
+    margin: 0;
+    width: 100%;
+    max-width: none;
+  }
+}
