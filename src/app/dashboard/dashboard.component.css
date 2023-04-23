@@ -1,96 +1,95 @@
-.dashboard {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  
-  .header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-  }
-  
-  .main {
-    margin-top: 2%;
-    margin-left:10%;
-    width:80%;
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    
-  }
-  
-  .chart {
-    flex: 1;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 1rem;
-    margin-right: 1rem;
-  }
-  
-  .table {
-    flex: 1;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 1rem;
-  }
-
-  .tableh3{
-    text-align: center;
-  }
-  
-
-  .toolbar {
-    height: 7.5rem;
-    justify-content: center;
-	background-color:#03338b;
-	border-radius:0px 0px 50px 50px;
-  }
-
-.img{
-    width:auto;
-    text-align:center;
+.toolbar {
+  height: 7.5rem;
+  justify-content: center;
+  background-color:#03338b;
+  border-radius:0px 0px 50px 50px;
+  margin-bottom: 40px;
 }
- 
-.div-button{
-    margin-top: 2%;
-    margin-left:10%;
-    text-align: center;
-    width:80%;
-    border-width: 1px; /* aqui, cada lado possui uma borda de largura diferente */
-    border-style: solid; /* estilos de borda diferentes para cima-baixo e esquerda-direita */
-    border-color: #d6d4d4; /* uma cor de borda para cada lado */
-    padding: 20px;
-    }
 
-.button{
-    text-align:center;
-    padding-top:2%;
-    padding-bottom:2%;
-    border:none!important;
-    background-color: white!important;
-    
-   }
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-.div-central{
-    margin-top: 2%;
-    margin-left:10%;
-    text-align: center;
-    width:80%;
-    border-width: 1px; /* aqui, cada lado possui uma borda de largura diferente */
-    border-style: solid; /* estilos de borda diferentes para cima-baixo e esquerda-direita */
-    border-color: #d6d4d4; /* uma cor de borda para cada lado */
-    padding: 20px;
-    }
-    .example-card {
-        max-width: 400px;
-        margin-bottom: 8px;
-      }
+.header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
 
-    .alinha-esquerda{
-       padding: 3%;
-       
-    }
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
 
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 31%;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.card .value {
+  color: #2196f3;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card .description {
+  font-size: 14px;
+  color: #999;
+}
+
+.chart {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 100%; /* ajuste a largura máxima desejada */
+  max-height: 400px; /* ajuste a altura máxima desejada */
+}
+
+.chart h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.button {
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+  width: 25%;
+  margin-right: 20px;
+}
+
+.button:hover {
+  background-color: #0c7cd5;
+}

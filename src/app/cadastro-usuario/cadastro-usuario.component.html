@@ -1,16 +1,23 @@
-<h1>Cadastro de Usuário</h1>
-
-<form (ngSubmit)="submitForm()">
-  <label for="nome">Nome:</label>
-  <input type="text" id="nome" name="nome" [(ngModel)]="usuario.nome" required>
-
-  <label for="email">E-mail:</label>
-  <input type="email" id="email" name="email" [(ngModel)]="usuario.email" required>
-
-  <label for="senha">Senha:</label>
-  <input type="password" id="senha" name="senha" [(ngModel)]="usuario.senha" required>
-
-  <button type="submit">Cadastrar</button>
-</form>
-  
-<div *ngIf="mensagem">{{ mensagem }}</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center mb-4">Cadastro de Usuário</h2>
+      <form (ngSubmit)="submitForm()">
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" [(ngModel)]="usuario.nome" required class="form-control form-control-lg">
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" [(ngModel)]="usuario.email" required class="form-control form-control-lg">
+        </div>
+        <div class="form-group">
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" name="senha" [(ngModel)]="usuario.senha" required class="form-control form-control-lg">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+      </form>
+      <div *ngIf="mensagem" class="text-center mt-3">{{ mensagem }}</div>
+    </div>
+  </div>
+</div>

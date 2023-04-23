@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TitulosService } from '../service/titulos.service';
 import { TitulosData } from '../models/titulos-data.model';
+import { DashboardData } from '../models/dashboard-data.model';
 import { Chart } from 'chart.js/auto';
 
 @Component({

@@ -1,55 +1,49 @@
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
-
-<div class="dashboard ">
-  <mat-toolbar class="toolbar">
-    <img src='/assets/logo2.png' class="img">
+<mat-toolbar class="toolbar">
+  <img src='/assets/logo2.png' class="img">
 </mat-toolbar>
 
-<section class="container" class="div-central">
-  <div class="row">
-      <div class="col button">
-          <button mat-flat-button><img src="/assets/button_addReceita.png"></button>
-      </div>
-      <div class="col button">
-          <button mat-flat-button><img src="/assets/button_addDespesa.png"></button>
-      </div>
-      <div class="col button">
-          <button routerLink="/titulos" mat-flat-button><img src="/assets/button_extrato.png"></button>
-      </div>
-      <div class="col button">
-          <button mat-flat-button><img src="/assets/button_sonho.png"></button>
-      </div>
-    </div>
-    <div class="row button">
-      <div class="col button">
-          <button mat-flat-button><img src="/assets/button_edu.png"></button>
-      </div>
-      <div class="col button">
-          <button routerLink="/usuarios" mat-flat-button><img src="/assets/button_user.png"></button>
-      </div>
-      <div class="col button">
-          <button mat-flat-button routerLink="/grafico"><img src="/assets/button_config.png"></button>
-      </div>
-      <div class="col button">
-          <button routerLink="/centrocusto" mat-flat-button><img src="/assets/button_info.png"></button>
-      </div>
-    </div> 
-  </section>  
+<div class="dashboard">
+<div class="header">
+  <h1>Dashboard</h1>
+</div>
 
-  <div class="main">
-    <div class="chart">
-      <canvas id="myChart"></canvas>
-    </div>
-    <div class="table">
-      <h3 style="text-align: center">Extrato</h3>
-      <p>Total de Despesas {{dashboardData.totalApagar | currency:'BRL':'symbol':'1.2-2'}}</p>
-      <p>Total de Receitas {{dashboardData.totalAreceber | currency:'BRL':'symbol':'1.2-2'}}</p>
-      <p>Saldo {{dashboardData.saldo | currency:'BRL':'symbol':'1.2-2'}}</p>
-    </div>
+<div class="button-container">
+  <div class="button-row">
+    <button class="button"><img src="/assets/button_edu.png"></button>
+    <button class="button"><img src="/assets/button_addDespesa.png"></button>
+    <button class="button"><img src="/assets/button_addReceita.png"></button>
+    <button class="button"  routerLink="/titulos"><img src="/assets/button_extrato.png"></button>
+  </div>
+  <div class="button-row">
+    <button class="button" routerLink="/centrocusto"><img src="/assets/button_info.png"></button>
+    <button class="button"><img src="/assets/button_sonho.png"></button>
+    <button class="button" routerLink="/usuarios"><img src="/assets/button_user.png"></button>
+    <button class="button" routerLink="/grafico"><img src="/assets/button_config.png"></button>
   </div>
 </div>
 
+<div class="cards">
+  <div class="card">
+    <h2>Despesas</h2>
+    <p class="value" style="color: red;">{{dashboardData.totalApagar | currency:'BRL':'symbol':'1.2-2'}}</p>
+    <p class="description">Total de despesas</p>
+  </div>
+  <div class="card">
+    <h2>Receitas</h2>
+    <p class="value"  style="color: green;">{{dashboardData.totalAreceber | currency:'BRL':'symbol':'1.2-2'}}</p>
+    <p class="description">Total de receitas</p>
+  </div>
+  <div class="card">
+    <h2>Saldo Atual</h2>
+    <p class="value" style="color: blue">{{dashboardData.saldo | currency:'BRL':'symbol':'1.2-2'}}</p>
+    <p class="description">Saldo Atual</p>
+  </div>
+</div>
 
-
+<div class="chart">
+  <h2>Gráfico centro</h2>
+  <canvas id="myChart"></canvas>
+</div>
+</div>
 <app-grafico-centrocusto></app-grafico-centrocusto>
 

@@ -1,0 +1,30 @@
+.container {
+    margin-top: 50px;
+  }
+  
+  form {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  form label {
+    font-weight: bold;
+  }
+  
+  form .form-control {
+    margin-bottom: 10px;
+  }
+  
+  .btn-block {
+    margin-top: 10px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .mt-3 {
+    margin-top: 15px;
+  }
+  

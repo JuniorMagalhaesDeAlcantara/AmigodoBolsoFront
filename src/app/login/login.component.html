@@ -1,19 +1,23 @@
-<div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-md-4">
-        <h2>Login</h2>
-        <div class="form-group">
-          <label for="email">E-mail:</label>
-          <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" required>
+
+  <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <h2 class="text-center mb-4">Login</h2>
+          <form>
+            <div class="form-group custom-input">
+              <label for="email">E-mail:</label>
+              <input type="email" class="form-control form-control-lg" id="email" [(ngModel)]="email" name="email" required>
+            </div>
+            <div class="form-group custom-input">
+              <label for="senha">Senha:</label>
+              <input type="password" class="form-control form-control-lg" id="senha" [(ngModel)]="senha" name="senha" required (keyup.enter)="onSubmit()">
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <button type="button" class="btn btn-primary" (click)="onSubmit()">Entrar</button>
+              <a class="btn btn-link" routerLink="/cadastro">Cadastrar</a>
+            </div>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="senha">Senha:</label>
-          <input type="password" class="form-control" id="senha" [(ngModel)]="senha" name="senha" required (keyup.enter)="onSubmit()">
-  
-  
-        </div>
-        <button type="button" class="btn btn-primary" (click)="onSubmit()">Entrar</button>
-        <button type="button" class="btn btn-primary" routerLink="/cadastro">Cadastrar</button>
-        </div>
-    </div>
-  </div>  
+      </div>
+  </div>
+
