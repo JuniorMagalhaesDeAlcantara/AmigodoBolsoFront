@@ -71,7 +71,7 @@ openModal(contentCriar: any,id: number) {
   this.modalService.open(contentCriar);
 }
 
-  editarCentroCusto(id: number, descricao: string, observacao: string) {
+  editarCentroCusto(id: number, descricao: string, observacao: string, ) {
     // Chama o serviço para atualizar o centro de custo
     this.centrocustoService.atualizarCentroCusto(id, descricao, observacao).subscribe(
       res => {

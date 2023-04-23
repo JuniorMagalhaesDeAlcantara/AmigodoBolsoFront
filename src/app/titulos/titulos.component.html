@@ -1,27 +1,154 @@
-<div class="dashboard ">
-  <mat-toolbar class="toolbar">
-    <img src='/assets/logo2.png' class="img">
-</mat-toolbar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Titulos</h1>
+      <hr>
+      <button type="button" class="btn btn-primary" (click)="abrirModalCriarTitulo(content)">Novo Titulo</button>
 
- <table class="div-central">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Descrição</th>
-        <th>Tipo</th>
-        <th>Valor</th>
-        <th>Data de Cadastro</th>
-        <th>Observação</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let titulosData of titulosData">
-        <td> {{titulosData.id}}</td>
-        <td> {{titulosData.descricao}}</td>
-        <td> {{titulosData.tipo}}</td>
-        <td> {{titulosData.valor | currency:'BRL':'symbol':'1.2-2'}}</td>
-        <td> {{titulosData.dataCadastro | date:'dd/MM/yyyy'}}</td>
-        <td> {{titulosData.observacao}}</td>
-      </tr>
-    </tbody>
-  </table>
+      <table class="div-central">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+            <th>Centro de Custo</th>
+            <th>Valor</th>
+            <th>Data de Cadastro</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let titulo of titulosData">
+            <td>{{ titulo.id }}</td>
+            <td>{{ titulo.descricao }}</td>
+            <td>{{ titulo.tipo }}</td>
+            <td>
+              <ul *ngIf="titulo.centrosDeCustos">
+                <li *ngFor="let centro of titulo.centrosDeCustos">
+                  {{centro.descricao}}
+                </li>
+              </ul>
+            </td>
+            <td>{{ titulo.valor | currency:'BRL':'symbol':'1.2-2' }}</td>
+            <td>{{titulo.dataCadastro | date:'dd/MM/yyyy'}}</td>
+            <td>{{titulo.observacao}}</td>
+            <td>
+              <form [formGroup]="formularioTitulo">
+                <button class="btn btn-outline-primary" (click)="abrirModalEditarTitulo(titulo)">Editar</button>
+                <button type="button" class="btn btn-sm btn-danger" (click)="titulo.id ? excluirTitulo(titulo.id) : null">Excluir</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Criar Novo Título</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formularioTitulo" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="descricao">Descrição:</label>
+              <input type="text" class="form-control" id="descricao" formControlName="descricao">
+            </div>
+      
+            <div class="form-group">
+              <label for="tipo">Tipo:</label>
+              <label>
+                <select class="form-control" id="tipo" formControlName="tipo">
+                  <option value="" disabled selected>Selecione o tipo do título</option>
+                  <option value="ARECEBER">Receber</option>
+                  <option value="APAGAR">Pagar</option>
+                </select>
+              </label>
+            </div>
+      
+            <div class="form-group">
+              <label for="valor">Valor:</label>
+              <input type="text" class="form-control" id="valor" formControlName="valor">
+            </div>
+      
+            <div class="form-group">
+              <label for="dataVencimento">Data de Vencimento:</label>
+              <input type="date" class="form-control" id="dataVencimento" formControlName="dataVencimento">
+            </div>
+      
+            <div class="form-group">
+              <label for="observacao">Observação:</label>
+              <textarea class="form-control" id="observacao" rows="3" formControlName="observacao"></textarea>
+            </div>
+      
+            <div class="form-group">
+              <label for="centrosDeCustos">Centro de Custo:</label>
+              <label>
+                <select class="form-control" id="centrosDeCustos" formControlName="centrosDeCustos">
+                  <option value="" disabled selected>Selecione o centro de custo</option>
+                  <option *ngFor="let centroDeCusto of centrosDeCustos" [value]="centroDeCusto.id">{{ centroDeCusto.descricao }}</option>
+                </select>
+              </label>
+            </div>
+        <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Salvar</button>
+              <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+      
+      <ng-template #modalEditar let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modalEditarTitle">Editar título</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cancelar')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="formularioTitulo">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="descricao">Descrição</label>
+              <input type="text" class="form-control" formControlName="descricao" id="descricao">
+            </div>
+            <div class="form-group">
+              <label for="tipo">Tipo</label>
+              <select class="form-control" formControlName="tipo" id="tipo">
+                <option value="">Selecione um tipo</option>
+                <option value="ARECEBER">Receita</option>
+                <option value="APAGAR">Despesa</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="valor" currency="BRL">Valor</label>
+              <input type="text" class="form-control" formControlName="valor" id="valor" >
+            </div>
+            <div class="form-group">
+              <label for="dataVencimento">Data de vencimento</label>
+              <input type="date" class="form-control" formControlName="dataVencimento" id="dataVencimento">
+            </div>
+            <div class="form-group">
+              <label for="dataReferencia">Data de referência</label>
+              <input type="date" class="form-control" formControlName="dataReferencia" id="dataReferencia">
+            </div>
+            <div class="form-group">
+              <label for="observacao">Observação</label>
+              <textarea class="form-control" formControlName="observacao" id="observacao"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="centrosDeCustos">Centro de custos</label>
+              <select class="form-control" formControlName="centrosDeCustos" id="centrosDeCustos">
+                <option value="">Selecione um centro de custos</option>
+                <option *ngFor="let centroDeCustos of centrosDeCustos" [value]="centroDeCustos.id">{{ centroDeCustos.descricao }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancelar')">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="salvarEdicao()">Salvar</button>
+          </div>
+        </form>
+      </ng-template>
+      
+      

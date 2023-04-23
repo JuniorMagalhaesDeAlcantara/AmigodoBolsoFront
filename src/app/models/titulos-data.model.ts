@@ -1,12 +1,15 @@
 export interface TitulosData {
-        id: any,
-        descricao: any,
-        tipo: any,
-        valor: any,
-        dataCadastro: Date,
-        dataReferencia: Date,
-        dataVencimento:Date,
-        dataPagamento:Date,
-        observacao: any
-    
-    }
+  id?: number;
+  descricao?: string;
+  tipo: string;
+  centrosDeCustos?: {
+    id: number;
+    descricao: string;
+   
+  }[];
+  valor: number;
+  dataCadastro: Date;
+  dataVencimento: Date;
+  observacao: string;
+  dataReferencia: Date;
+}
