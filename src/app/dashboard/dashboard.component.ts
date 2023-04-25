@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   dashboardData!: DashboardData;
   centrocustoData!: CentrocustoData[];
   titulosData!: any[];
+  gastosPorCategoria: { [descricao: string]: number } = {};
   @ViewChild('modal') modal!: any;
   @ViewChild(TitulosComponent) titulosComponent!: TitulosComponent;
 
@@ -36,9 +37,18 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getDashboardData().subscribe(
       data => {
         this.dashboardData = data;
-        this.centroCustoService. getCentrocustoData().subscribe(
+        this.centroCustoService.getCentrocustoData().subscribe(
           data => {
             this.centrocustoData = data;
+          },
+          error => {
+            console.log(error);
+          }
+        );
+        this.titulosService.getTitulosData().subscribe(
+          data => {
+            this.titulosData = data;
+            this.gastosPorCategoria = this.calcularGastosPorCategoria(data);
           },
           error => {
             console.log(error);
@@ -56,5 +66,24 @@ export class DashboardComponent implements OnInit {
       this.modalService.open(this.titulosComponent.content);
     }
   }
-    
+
+  calcularGastosPorCategoria(titulosData: TitulosData[]): { [descricao: string]: number } {
+    const gastos: { [descricao: string]: number } = {};
+
+    titulosData.forEach(titulo => {
+      if (titulo.centrosDeCustos) {
+        titulo.centrosDeCustos.forEach(centro => {
+          const descricao = centro.descricao;
+
+          if (!gastos[descricao]) {
+            gastos[descricao] = 0;
+          }
+
+          gastos[descricao] += titulo.valor;
+        });
+      }
+    });
+
+    return gastos;
+  }
 }

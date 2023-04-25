@@ -49,10 +49,47 @@
   <h2>Gráfico Centro de Custos</h2>
   <canvas id="myChart"></canvas>
 </div>
+
+<div class="container-extrato">
+  <h2>Extrato</h2>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Categoria</th>
+          <th scope="col">Valor Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let categoria of gastosPorCategoria | keyvalue">
+          <td>{{categoria.key}}</td>
+          <td>{{categoria.value | currency:'BRL'}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="saldo-wrapper">
+      <h5>Saldo Atual</h5>
+      <p class="value" style="color: blue; ">{{dashboardData.saldo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}</p>
+    </div>
+  </div>
+</div>
+
 </div>
 
 <app-grafico-centrocusto></app-grafico-centrocusto>
 <app-titulos class="hide-contents"></app-titulos>
+
+<footer>
+  <div class="logo">
+    <img src="/assets/logo_techninja.png" alt="Logo">
+    <p>Created by TechNinja</p>
+  </div>
+</footer>
+
+
+
+
+
 
 
 

@@ -104,3 +104,48 @@
 .hide-contents {
   display: none;
 }
+
+.container-extrato{
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.saldo-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  gap: 44%;
+}
+
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 90px;
+  background-color: #03338b;
+  color: #fff;
+  text-align: center;
+  position: relative; /* adiciona uma posição relativa no elemento pai para definir a posição do filho */
+  padding-top: 40px;
+   /* define um padding para evitar que o texto fique escondido atrás da imagem */
+}
+
+.logo img {
+  position: absolute; /* adiciona uma posição absoluta para sobrepor a imagem ao texto */
+  top: 0; /* define a posição vertical da imagem em relação ao elemento pai */
+  left: 50%; /* define a posição horizontal da imagem em relação ao elemento pai */
+  transform: translateX(-50%); /* centraliza a imagem horizontalmente */
+  height: 43px;
+  padding-top: 5px;
+}
+
+
+
+
