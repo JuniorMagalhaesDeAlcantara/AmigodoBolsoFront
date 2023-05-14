@@ -54,10 +54,12 @@ export class TitulosComponent implements OnInit {
 
   excluirTitulo(id: number) {
     if (id !== undefined) {
-      this.titulosService.excluirTitulo(id).subscribe(() => {
-        // atualizar a lista de titulos após a exclusão
-        this.getTitulos();
-      });
+      if (confirm("Tem certeza que deseja excluir este título?")) {
+        this.titulosService.excluirTitulo(id).subscribe(() => {
+          // atualizar a lista de titulos após a exclusão
+          this.getTitulos();
+        });
+      }
     }
   }
 

@@ -6,8 +6,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TitulosComponent } from './titulos/titulos.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.component';
+import { DicasParaOBolsoComponent } from './dicas-para-o-bolso/dicas-para-o-bolso.component';
 import { CentroCustoComponent } from './centro-custo/centro-custo.component';
 import { GraficoCentrocustoComponent } from './grafico-centrocusto/grafico-centrocusto.component';
+
 
 
 const routes: Routes = [
@@ -17,7 +19,8 @@ const routes: Routes = [
   { path: 'titulos', component: TitulosComponent, canActivate: [AuthGuard] },
   { path: 'usuarios', component: UsuarioComponent, canActivate: [AuthGuard] },
   { path: 'centrocusto', component: CentroCustoComponent, canActivate: [AuthGuard] },
-  { path: 'grafico', component: GraficoCentrocustoComponent, canActivate: [AuthGuard] }
+  { path: 'grafico', component: GraficoCentrocustoComponent, canActivate: [AuthGuard] },
+  { path: 'dicasparaobolso', component: DicasParaOBolsoComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

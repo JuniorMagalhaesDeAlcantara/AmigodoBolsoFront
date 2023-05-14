@@ -20,6 +20,7 @@ import { CadastroUsuarioComponent } from './cadastro-usuario/cadastro-usuario.co
 import { CentroCustoComponent } from './centro-custo/centro-custo.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GraficoCentrocustoComponent } from './grafico-centrocusto/grafico-centrocusto.component';
+import { DicasParaOBolsoComponent } from './dicas-para-o-bolso/dicas-para-o-bolso.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { GraficoCentrocustoComponent } from './grafico-centrocusto/grafico-centr
     CadastroUsuarioComponent,
     CentroCustoComponent,
     GraficoCentrocustoComponent,
+    DicasParaOBolsoComponent,
   ],
   imports: [
     BrowserModule,

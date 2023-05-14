@@ -1,0 +1,54 @@
+<mat-toolbar class="toolbar">
+    <img src='/assets/logo2.png' class="img">
+  </mat-toolbar>
+  
+  <div class="dashboard">
+  
+    <div class="button-container">
+      <div class="button-row">
+        <button class="button"  routerLink="/dashboard"><img src="/assets/button_home.png">
+            <span style="color: black;">Home</span>
+          </button>
+        <button class="button" routerLink="/centrocusto"><img src="/assets/button_categoria.png">
+          <span style="color: black;">Centro de Custo</span>
+        </button>
+        <button class="button" routerLink="/usuarios"><img src="/assets/button_user.png">
+          <span style="color: black;">Perfil do Usuário</span>
+        </button>
+        <button class="button" onclick="location.reload()"><img src="/assets/button_sair.png">
+          <span style="color: black;">Sair</span>
+        </button>
+      </div>
+    </div>
+  
+    <div class="tab-container">
+        <ul class="tab-list">
+          <li [class.active]="isArtigosAtivo" (click)="alterarTab('artigos')">Artigos</li>
+          <li [class.active]="isVideosAtivo" (click)="alterarTab('videos')">Vídeos</li>
+        </ul>
+      
+        <div *ngIf="isArtigosAtivo" class="card-container">
+            <div *ngFor="let artigo of artigos" class="card">
+              <a href="{{artigo.link}}" target="_blank">
+                <img [src]="artigo.imagem" alt="{{artigo.titulo}}">
+                <h3>{{artigo.titulo}}</h3>
+                <p>{{artigo.descricao}}</p>
+              </a>
+            </div>
+          
+        </div>
+      
+        <div *ngIf="isVideosAtivo" class="card-container">
+            <div *ngFor="let video of videos" class="card">
+              <a href="{{video.link}}" target="_blank">
+                <img [src]="video.imagem" alt="{{video.titulo}}">
+                <h3>{{video.titulo}}</h3>
+                <p>{{video.descricao}}</p>
+              </a>
+            </div>
+        </div>
+      </div>
+      
+      
+  </div>
+  

@@ -174,3 +174,16 @@ textarea.form-control {
     max-width: none;
   }
 }
+
+.alert {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  border: 1px solid transparent;
+}
+

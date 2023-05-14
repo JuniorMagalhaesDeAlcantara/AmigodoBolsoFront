@@ -56,6 +56,22 @@ export class GraficoCentrocustoComponent implements OnInit {
               labels: {
                 boxWidth: 20
               }
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  let label = context.label || '';
+                  if (label) {
+                    label += ': ';
+                  }
+                  const value = context.parsed;
+                  if (value != null) {
+                    label += new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+                    label += ` (${((value / dataValues.reduce((a, b) => a + b, 0)) * 100).toFixed(2)}%)`;
+                  }
+                  return label;
+                }
+              }
             }
           },
           cutout: '60%',

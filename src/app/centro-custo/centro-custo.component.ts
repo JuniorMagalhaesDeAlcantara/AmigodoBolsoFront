@@ -5,6 +5,8 @@ import { CentrocustoData } from '../models/centrocusto-data.models';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
+
+
 @Component({
   selector: 'app-centro-custo',
   templateUrl: './centro-custo.component.html',
@@ -141,21 +143,24 @@ openModal(contentCriar: any,id: number) {
   }
 
   removerCentroCusto(id: number) {
-    this.centrocustoService.removerCentroCusto(id).subscribe(
-      res => {
-        // Atualiza a lista de centros de custo
-        this.centrocustoService.getCentrocustoData().subscribe(
-          (data: CentrocustoData[]) => {
-            this.centrocustoData = data;
-          },
-          error => {
-            console.log(error);
-          }
-        );
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    if (window.confirm('Tem certeza que deseja excluir esse centro de custo?')) {
+      this.centrocustoService.removerCentroCusto(id).subscribe(
+        res => {
+          // Atualiza a lista de centros de custo
+          this.centrocustoService.getCentrocustoData().subscribe(
+            (data: CentrocustoData[]) => {
+              this.centrocustoData = data;
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
+  
 }
