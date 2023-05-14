@@ -19,12 +19,18 @@ export class CadastroUsuarioComponent implements OnInit {
 
   mensagem: string = '';
 
-  constructor(private usuarioService: UsuarioService, private router: Router) { }
+  constructor(private usuarioService: UsuarioService, private router: Router, ) {
+  }
 
   ngOnInit() {
   }
 
   cadastrarUsuario() {
+    if (!this.usuario.email || !this.usuario.senha) {
+      alert('Por favor, preencha o email e a senha.');
+      return;
+    }
+
     this.usuarioService.cadastrarUsuario(this.usuario).subscribe(
       (response: any) => {
         console.log('Usuário cadastrado com sucesso!');
@@ -33,7 +39,11 @@ export class CadastroUsuarioComponent implements OnInit {
         this.router.navigate(['/']);
       },
       (error: HttpErrorResponse) => {
-        console.error(error);
+        if (error.status === 400) {
+          alert('O email já está sendo utilizado.');
+        } else {
+          console.error(error);
+        }
       }
     );
   }

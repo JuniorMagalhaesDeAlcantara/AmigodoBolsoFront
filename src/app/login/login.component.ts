@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   email = '';
   senha = '';
+  errorMessage = '';
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -21,14 +22,13 @@ export class LoginComponent {
       response => {
         console.log(response.token);
         console.log('Usuário logado com sucesso!');
-        this.router.navigate(['/dashboard']);
-           // redirecionar para a página de destino
+        this.router.navigate(['/dashboard']); // redirecionar para a página de destino
       },
       
       error => {
         console.log(error);
-        console.log('Erro ao fazer login:', error);
-        // exibir mensagem de erro para o usuário
+        this.errorMessage = 'Usuario ou senha inválidos! ';
+        alert(this.errorMessage); // exibir mensagem de erro para o usuário
       }
     );
   }

@@ -175,4 +175,26 @@ textarea.form-control {
   }
 }
 
+.logo {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  background-color: #03338b;
+  color: #fff;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.logo img {
+  position: absolute; /* adiciona uma posição absoluta para sobrepor a imagem ao texto */
+  top: 0; /* define a posição vertical da imagem em relação ao elemento pai */
+  left: 50%; /* define a posição horizontal da imagem em relação ao elemento pai */
+  transform: translateX(-50%); /* centraliza a imagem horizontalmente */
+  height: 43px;
+  padding-top: 5px;
+}
     
