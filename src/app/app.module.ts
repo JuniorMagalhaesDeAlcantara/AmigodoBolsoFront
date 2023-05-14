@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GraficoCentrocustoComponent } from './grafico-centrocusto/grafico-centrocusto.component';
 import { DicasParaOBolsoComponent } from './dicas-para-o-bolso/dicas-para-o-bolso.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

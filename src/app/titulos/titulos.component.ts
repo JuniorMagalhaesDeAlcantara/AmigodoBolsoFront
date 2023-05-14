@@ -18,7 +18,7 @@ export class TitulosComponent implements OnInit {
   @ViewChild('content') content: any;
   @ViewChild('modalEditar') modalEditar: any;
   tituloEditando: TitulosData | null = null;
-
+  
 
   constructor(
     private formBuilder: FormBuilder,
@@ -51,6 +51,7 @@ export class TitulosComponent implements OnInit {
       this.titulosData = titulos;
     });
   }
+
 
   excluirTitulo(id: number) {
     if (id !== undefined) {
@@ -91,6 +92,34 @@ export class TitulosComponent implements OnInit {
       this.getTitulos();
     });
   }
+  
+  filtrarTitulosPorDataCadastro() {
+    const filtroDataCadastro = this.formularioTitulo.get('dataCadastro')!.value;
+    let periodoCadastroInicial: Date | undefined;
+    let periodoCadastroFinal: Date | undefined;
+  
+    if (filtroDataCadastro) {
+      periodoCadastroInicial = new Date(filtroDataCadastro);
+      periodoCadastroFinal = new Date(filtroDataCadastro);
+      periodoCadastroFinal.setDate(periodoCadastroFinal.getDate() + 1);
+      periodoCadastroFinal.setMilliseconds(periodoCadastroFinal.getMilliseconds() - 1);
+    }
+  
+    this.titulosService.getTitulosData().subscribe((titulos: TitulosData[]) => {
+      this.titulosData = titulos.filter((titulo: TitulosData) => {
+        if (periodoCadastroInicial && periodoCadastroFinal) {
+          return new Date(titulo.dataCadastro) >= periodoCadastroInicial && new Date(titulo.dataCadastro) <= periodoCadastroFinal;
+        } else if (periodoCadastroInicial) {
+          return new Date(titulo.dataCadastro) >= periodoCadastroInicial;
+        } else if (periodoCadastroFinal) {
+          return new Date(titulo.dataCadastro) <= periodoCadastroFinal;
+        }
+        return true;
+      });
+    });
+  }
+  
+
 
   abrirModalEditarTitulo(titulo: TitulosData) {
     // preencher o formulário com os dados do título selecionado
@@ -133,6 +162,10 @@ export class TitulosComponent implements OnInit {
         this.getTitulos();
       });
     }
+  }
+
+  imprimir() {
+    window.print();
   }
 
 

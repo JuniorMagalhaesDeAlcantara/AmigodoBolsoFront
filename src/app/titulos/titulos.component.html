@@ -21,17 +21,34 @@
     </div>
   </div>
 
+  <form [formGroup]="formularioTitulo">
+    <div class="row mb-3">
+      <div class="col">
+        <label for="dataCadastroInicial">Filtrar por período de cadastro:</label>
+        <input type="date" formControlName="dataCadastroInicial" id="dataCadastroInicial" class="form-control">
+      </div>
+      <div class="col">
+        <label for="dataCadastroFinal">a</label>
+        <input type="date" formControlName="dataCadastroFinal" id="dataCadastroFinal" class="form-control">
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary" (click)="filtrarTitulosPorDataCadastro()">Filtrar</button>
+      </div>
+    </div>
+  </form>
+
 <div class="container-fluid">
    <div class="table-responsive">
     <table class="table table-striped table-hover  button-container">
       <thead>
         <tr>
           <th>ID</th>
-          <th>Descrição</th>
+          <th>Nome</th>
           <th>Tipo</th>
           <th>Centro de Custo</th>
           <th>Valor</th>
           <th>Data de Cadastro</th>
+          <th>Data de Vencimento</th>
           <th>Observação</th>
           <th>Ações</th>
         </tr>
@@ -50,6 +67,7 @@
           </td>
           <td>{{ titulo.valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}</td>
           <td>{{titulo.dataCadastro | date:'dd/MM/yyyy'}}</td>
+          <td>{{titulo.dataVencimento | date:'dd/MM/yyyy'}}</td>
           <td>{{titulo.observacao}}</td>
           <td>
             <form [formGroup]="formularioTitulo">
@@ -62,6 +80,8 @@
     </table>
   </div>
 </div>
+
+<button type="button" class="btn btn-success" (click)="imprimir()">Imprimir</button>
 
 <ng-template #content let-modal id="modal">
   <div class="modal-header bg-primary text-light">

@@ -7,6 +7,7 @@ import { CentrocustoData } from '../models/centrocusto-data.models';
 import { CentrosDeCustosSelectData } from '../models/CentrosCustosSelect-data.model';
 import { environment } from '../../environments/environment';
 import { CentroCustoService } from './centro-custo.service';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
