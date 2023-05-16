@@ -176,7 +176,7 @@ textarea.form-control {
 }
 
 .logo {
-  position: fixed;
+  position: relative;
   bottom: 0;
   display: flex;
   align-items: center;
@@ -187,6 +187,7 @@ textarea.form-control {
   color: #fff;
   text-align: center;
   padding-top: 40px;
+  margin-top:10px;
 }
 
 .logo img {
@@ -232,5 +233,24 @@ textarea.form-control {
   background-color: #0b5ed7;
   border-color: #0a58ca;
  }
+
+ @media print {
+  body * {
+    visibility: hidden;
+  }
+  #tabela-de-titulos, #tabela-de-titulos * {
+    visibility: visible;
+  }
+  #tabela-de-titulos .btn {
+    display: none;
+  }
+  #tabela-de-titulos {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+
 
     

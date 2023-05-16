@@ -188,7 +188,7 @@ textarea.form-control {
 }
 
 .logo {
-  position: fixed;
+  position: relative;
   bottom: 0;
   display: flex;
   align-items: center;
@@ -199,6 +199,7 @@ textarea.form-control {
   color: #fff;
   text-align: center;
   padding-top: 40px;
+  margin-top: auto;
 }
 
 .logo img {

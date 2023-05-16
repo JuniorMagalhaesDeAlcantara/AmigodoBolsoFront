@@ -18,7 +18,6 @@ export class TitulosComponent implements OnInit {
   @ViewChild('content') content: any;
   @ViewChild('modalEditar') modalEditar: any;
   tituloEditando: TitulosData | null = null;
-  
 
   constructor(
     private formBuilder: FormBuilder,
@@ -92,32 +91,35 @@ export class TitulosComponent implements OnInit {
       this.getTitulos();
     });
   }
+  filtrarTitulosPorPeriodoCadastro() {
+    const filtroDataCadastroInicio = this.formularioTitulo.get('dataCadastro')!.value;
+    const filtroDataCadastroFim = this.formularioTitulo.get('dataCadastro')!.value;
+    let periodoCadastroInicio: string | undefined;
+    let periodoCadastroFim: string | undefined;
   
-  filtrarTitulosPorDataCadastro() {
-    const filtroDataCadastro = this.formularioTitulo.get('dataCadastro')!.value;
-    let periodoCadastroInicial: Date | undefined;
-    let periodoCadastroFinal: Date | undefined;
+    if (filtroDataCadastroInicio) { 
+      periodoCadastroInicio = new Date(filtroDataCadastroInicio).toISOString();
+    }
   
-    if (filtroDataCadastro) {
-      periodoCadastroInicial = new Date(filtroDataCadastro);
-      periodoCadastroFinal = new Date(filtroDataCadastro);
-      periodoCadastroFinal.setDate(periodoCadastroFinal.getDate() + 1);
-      periodoCadastroFinal.setMilliseconds(periodoCadastroFinal.getMilliseconds() - 1);
+    if (filtroDataCadastroFim) { 
+      periodoCadastroFim = new Date(filtroDataCadastroFim).toISOString();
+      periodoCadastroFim = periodoCadastroFim.split('T')[0] + 'T23:59:59.999Z';
     }
   
     this.titulosService.getTitulosData().subscribe((titulos: TitulosData[]) => {
       this.titulosData = titulos.filter((titulo: TitulosData) => {
-        if (periodoCadastroInicial && periodoCadastroFinal) {
-          return new Date(titulo.dataCadastro) >= periodoCadastroInicial && new Date(titulo.dataCadastro) <= periodoCadastroFinal;
-        } else if (periodoCadastroInicial) {
-          return new Date(titulo.dataCadastro) >= periodoCadastroInicial;
-        } else if (periodoCadastroFinal) {
-          return new Date(titulo.dataCadastro) <= periodoCadastroFinal;
+        if (periodoCadastroInicio && periodoCadastroFim) {
+          return new Date(titulo.dataCadastro) >= new Date(periodoCadastroInicio) && new Date(titulo.dataCadastro) <= new Date(periodoCadastroFim);
+        } else if (periodoCadastroInicio) {
+          return new Date(titulo.dataCadastro) >= new Date(periodoCadastroInicio);
+        } else if (periodoCadastroFim) {
+          return new Date(titulo.dataCadastro) <= new Date(periodoCadastroFim);
         }
         return true;
       });
     });
   }
+  
   
 
 
