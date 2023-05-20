@@ -58,6 +58,7 @@ export class TitulosComponent implements OnInit {
         this.titulosService.excluirTitulo(id).subscribe(() => {
           // atualizar a lista de titulos após a exclusão
           this.getTitulos();
+          alert("Título excluído com sucesso!");
         });
       }
     }
@@ -70,27 +71,51 @@ export class TitulosComponent implements OnInit {
 
 
   onSubmit(): void {
-    console.log(this.formularioTitulo.value);
-    const dadosTitulo: TitulosData = {
-      descricao: this.formularioTitulo.get('descricao')!.value,
-      tipo: this.formularioTitulo.get('tipo')!.value,
-      valor: parseFloat(this.formularioTitulo.get('valor')!.value.replace('.', '').replace(',', '.')),
-      dataReferencia: new Date(),
-      dataCadastro: new Date(),
-      dataVencimento: this.formularioTitulo.get('dataVencimento')!.value,
-      observacao: this.formularioTitulo.get('observacao')!.value,
-      centrosDeCustos: [{ 
-        id: Number(this.formularioTitulo.get('centrosDeCustos')!.value),
-        descricao: this.centrosDeCustos.find(x => x.id === Number(this.formularioTitulo.get('centrosDeCustos')!.value))!.descricao,
-      }]
-    };
-    
-    this.titulosService.criarTitulo(dadosTitulo).subscribe(() => {
-      this.modalService.dismissAll();
-      this.formularioTitulo.reset();
-      this.getTitulos();
-    });
+    // Verifica se os campos obrigatórios estão preenchidos
+    if (
+      this.formularioTitulo.get('descricao')!.value &&
+      this.formularioTitulo.get('tipo')!.value &&
+      this.formularioTitulo.get('valor')!.value &&
+      this.formularioTitulo.get('dataVencimento')!.value &&
+      this.formularioTitulo.get('observacao')!.value &&
+      this.formularioTitulo.get('centrosDeCustos')!.value
+    ) {
+      console.log(this.formularioTitulo.value);
+      const dadosTitulo: TitulosData = {
+        descricao: this.formularioTitulo.get('descricao')!.value,
+        tipo: this.formularioTitulo.get('tipo')!.value,
+        valor: parseFloat(
+          this.formularioTitulo.get('valor')!.value.replace('.', '').replace(',', '.')
+        ),
+        dataReferencia: new Date(),
+        dataCadastro: new Date(),
+        dataVencimento: this.formularioTitulo.get('dataVencimento')!.value,
+        observacao: this.formularioTitulo.get('observacao')!.value,
+        centrosDeCustos: [
+          {
+            id: Number(this.formularioTitulo.get('centrosDeCustos')!.value),
+            descricao: this.centrosDeCustos.find(
+              (x) => x.id === Number(this.formularioTitulo.get('centrosDeCustos')!.value)
+            )!.descricao,
+          },
+        ],
+      };
+  
+      this.titulosService.criarTitulo(dadosTitulo).subscribe(() => {
+        this.modalService.dismissAll();
+        this.formularioTitulo.reset();
+        this.getTitulos();
+  
+        // Exibe o alerta de sucesso
+        alert('Título criado com sucesso!');
+      });
+    } else {
+      // Exiba uma mensagem de erro ou tome uma ação adequada para lidar com os campos não preenchidos
+      alert('Por favor, preencha todos os campos obrigatórios.');
+    }
   }
+  
+  
   filtrarTitulosPorPeriodoCadastro() {
     const filtroDataCadastroInicio = this.formularioTitulo.get('dataCadastro')!.value;
     const filtroDataCadastroFim = this.formularioTitulo.get('dataCadastro')!.value;
@@ -146,26 +171,49 @@ export class TitulosComponent implements OnInit {
       id: this.formularioTitulo.get('id')!.value,
       descricao: this.formularioTitulo.get('descricao')!.value,
       tipo: this.formularioTitulo.get('tipo')!.value,
-      valor: parseFloat(this.formularioTitulo.get('valor')!.value.replace('.', '').replace(',', '.')),
+      valor: parseFloat(
+        this.formularioTitulo.get('valor')!.value.replace('.', '').replace(',', '.')
+      ),
       dataReferencia: new Date(),
       dataCadastro: new Date(),
       dataVencimento: this.formularioTitulo.get('dataVencimento')!.value,
       observacao: this.formularioTitulo.get('observacao')!.value,
-      centrosDeCustos: [{ 
-        id: Number(this.formularioTitulo.get('centrosDeCustos')!.value),
-        descricao: this.centrosDeCustos.find(x => x.id === Number(this.formularioTitulo.get('centrosDeCustos')!.value))!.descricao,
-      }]
+      centrosDeCustos: [
+        {
+          id: Number(this.formularioTitulo.get('centrosDeCustos')!.value),
+          descricao: this.centrosDeCustos.find(
+            (x) => x.id === Number(this.formularioTitulo.get('centrosDeCustos')!.value)
+          )!.descricao,
+        },
+      ],
     };
-    
-    if (dadosTitulo.id && dadosTitulo.id > 0) {
-      this.titulosService.editarTitulo(dadosTitulo.id, dadosTitulo).subscribe(() => {
-        this.modalService.dismissAll();
-        this.formularioTitulo.reset();
-        this.getTitulos();
-      });
+  
+    if (dadosTitulo.descricao && dadosTitulo.tipo && dadosTitulo.valor && dadosTitulo.dataVencimento && dadosTitulo.observacao && dadosTitulo.centrosDeCustos) {
+      if (dadosTitulo.id && dadosTitulo.id > 0) {
+        this.titulosService.editarTitulo(dadosTitulo.id, dadosTitulo).subscribe(
+          () => {
+            this.modalService.dismissAll();
+            this.formularioTitulo.reset();
+            this.getTitulos();
+  
+            // Exibe o alerta de sucesso
+            alert('Título editado com sucesso!');
+          },
+          (error) => {
+            // Exibe o alerta de erro
+            alert('Erro ao editar o título. Por favor, tente novamente.');
+  
+            // Você também pode exibir informações adicionais sobre o erro no console
+            console.log('Erro ao editar o título:', error);
+          }
+        );
+      }
+    } else {
+      // Exibe o alerta informando para preencher campos obrigatórios
+      alert('Por favor, preencha todos os campos obrigatórios.');
     }
   }
-
+  
   imprimir() {
     window.print();
   }
