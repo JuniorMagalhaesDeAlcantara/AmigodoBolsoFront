@@ -68,10 +68,16 @@ export class DicasParaOBolsoComponent {
       link: 'https://www.youtube.com/watch?v=6nozjRdiOps'
     },
     {
+      titulo: '5 TRUQUES PRÁTICOS PARA GUARDAR DINHEIRO',
+      descricao: 'Truqus para economizar dinheiro',
+      imagem: 'https://picsum.photos/id/180/200/150',
+      link: 'https://www.youtube.com/watch?v=WLNmUr7GwU4'
+    },
+    {
       titulo: 'Como sair das dívidas',
       descricao: 'Passo a passo para sair das dívidas e organizar as finanças',
       imagem: 'https://picsum.photos/id/60/200/150',
-      link: 'https://www.youtube.com/watch?v=8zj0GJKTWwE'
+      link: 'https://www.youtube.com'
     }
   ];
 }
