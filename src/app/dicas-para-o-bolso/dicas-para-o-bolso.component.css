@@ -1,158 +1,168 @@
 .toolbar {
-    height: 7.5rem;
-    justify-content: center;
-    background-color:#03338b;
-    border-radius:0px 0px 50px 50px;
-    margin-bottom: 40px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 7.5rem;
+  background-color: #03338b;
+  border-radius: 0px 0px 50px 50px;
+  margin-bottom: 40px;
+}
 
-  .dashboard {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-  }
+.toolbar img {
+  max-height: 100%;
+  max-width: 100%;
+}
 
-  .button-container {
-    border-radius: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
-  }
-  
-  .button-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .button {
-    background-color: #fff;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
-    transition: all 0.3s ease;
-    width: 25%;
-    margin-right: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .button:hover {
-    background-color: #0c7cd5;
-  }
-  
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    margin: 10px;
-    width: calc(33.33% - 20px);
-    box-sizing: border-box;
-  }
-  
-  .card img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
-    padding-top: 2%;
-  }
-  
-  .card a {
-    text-decoration: none;
-    color: inherit;
-    text-align: center;
-  }
-  
-  .card h3 {
-    max-height: 60px;
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    overflow: hidden;
-  }
-  
-  .card p {
-    max-height: 80px;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    overflow: hidden;
-  }
-  
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-  .tab-list li {
-    display: inline-block;
-    margin-right: 20px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    color: #ccc;
-    padding-bottom: 10px;
-    border-bottom: 2px solid transparent;
-  }
+.header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.button-container {
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  margin-right: 20px;
+  padding: 10px 20px;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  color: #000;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0c7cd5;
+  color: #fff;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  width: calc(33.33% - 20px);
+  box-sizing: border-box;
+}
+
+.card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  padding-top: 2%;
+}
+
+.card a {
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+}
+
+.card h3 {
+  max-height: 60px;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.card p {
+  max-height: 80px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.tab-list li {
+  display: inline-block;
+  margin-right: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ccc;
+  padding-bottom: 10px;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-list li.active {
+  color: black;
+  border-color: black;
+}
+
+.tab-container {
+  margin-top: 30px;
+}
+
+.tab-content {
+  display: none;
+  padding: 20px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.card p {
+  font-size: 14px;
+  color: black;
+  margin: 5px 0;
+}
   
-  .tab-list li.active {
-    color: black;
-    border-color: black;
-  }
-  .tab-container {
-    margin-top: 30px;
-  }
-  
-  .tab-content {
-    display: none;
-    padding: 20px;
-  }
-  
-  .tab-content.active {
-    display: block;
-  }
-  
-  
-  .card p {
-    font-size: 14px;
-    color: black;
-    margin: 5px 0;
-  }
-  
-  .logo {
-    position: fixed;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-    background-color: #03338b;
-    color: #fff;
-    text-align: center;
-    padding-top: 40px;
-  }
-  
-  .logo img {
-    position: absolute; /* adiciona uma posição absoluta para sobrepor a imagem ao texto */
-    top: 0; /* define a posição vertical da imagem em relação ao elemento pai */
-    left: 50%; /* define a posição horizontal da imagem em relação ao elemento pai */
-    transform: translateX(-50%); /* centraliza a imagem horizontalmente */
-    height: 43px;
-    padding-top: 5px;
-  }
+.logo {
+  position: relative;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  background-color: #03338b;
+  color: #fff;
+  text-align: center;
+  padding-top: 40px;
+  margin-top: auto;
+}
+
+.logo img {
+  position: absolute; /* adiciona uma posição absoluta para sobrepor a imagem ao texto */
+  top: 0; /* define a posição vertical da imagem em relação ao elemento pai */
+  left: 50%; /* define a posição horizontal da imagem em relação ao elemento pai */
+  transform: translateX(-50%); /* centraliza a imagem horizontalmente */
+  height: 43px;
+  padding-top: 5px;
+}

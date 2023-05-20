@@ -114,7 +114,6 @@ table td form button {
   }
 }
 
-/* Estilos para o modal */
 .modal-header {
   background-color: #f5f5f5;
   border-bottom: 1px solid #d1d1d1;
@@ -165,6 +164,7 @@ table td form button {
 textarea.form-control {
   height: auto;
 }
+
 
 /* Estilos para dispositivos móveis */
 @media (max-width: 767.98px) {
